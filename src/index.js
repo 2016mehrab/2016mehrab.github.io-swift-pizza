@@ -52,31 +52,14 @@ function App() {
       <Header />
       <Menu />
       <Footer />
+      <Signature/>
     </>
   );
 }
-function Pizza(props) {
-  return (
-    <div className="card ">
-      <div className="card-image-container">
-
-      <img src={props.photoName} className="card-image" alt="Pizza" />
-      </div>
-      <div className="card-content grid-column">
-        <div className="card-title-price-group">
-          <h2 className="card-title">{props.name}</h2>
-          <span>${props.price * 2}</span>
-        </div>
-        <p className="card-description">{props.ingredients}</p>
-      </div>
-    </div>
-  );
-}
 function Header() {
-  const style = { color: "red", fontSize: "3em", textTransform: "capitalize" };
   return (
     <header>
-      <h1 style={style}>Swift Pizza Co.</h1>
+      <h1>Swift Pizza Co.</h1>
     </header>
   );
 }
@@ -100,13 +83,54 @@ function Menu() {
     </main>
   );
 }
-function Footer() {
+function Pizza(props) {
   return (
+    <div className="card ">
+      <div className="card-image-container">
+        <img src={props.photoName} className="card-image" alt="Pizza" />
+      </div>
+      <div className="card-content grid-column">
+        <div className="card-title-price-group">
+          <h2 className="card-title">{props.name}</h2>
+          <span>${props.price * 2}</span>
+        </div>
+        <p className="card-description">{props.ingredients}</p>
+      </div>
+    </div>
+  );
+}
+function Footer() {
+  const open= 10;
+  const close= 22;
+  const current= new Date().getHours();
+  const status = current >= open && current < close;
+  
+    return (
     <footer>
-      <p className="footer">
-        {new Date().toLocaleTimeString()} <span>We're currently open!</span>
-      </p>
+      {status ? (
+        <p className="footer open">
+          {new Date().toLocaleTimeString()} <span>We're currently open!</span>
+        </p>
+      ) : (
+        <p className="footer close">
+          {new Date().toLocaleTimeString()} <span>Sorry, we're currently closed!</span>
+        </p>
+      )}
     </footer>
+  );
+
+}
+
+function Signature() {
+  return (
+    <p className="signature">
+      Made by{" "}
+      <strong>
+        <a href="https://github.com/2016mehrab" target="_blank">
+          Eshan
+        </a>
+      </strong>
+    </p>
   );
 }
 

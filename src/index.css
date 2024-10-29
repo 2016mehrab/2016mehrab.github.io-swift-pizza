@@ -13,7 +13,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   background-color: var(--dark);
@@ -23,8 +23,9 @@ main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: 1.5em;
   align-items: center;
-  block-size: 50rem;
+  block-size: 48rem;
   container: menu / inline-size;
   justify-content: center;
 
@@ -33,15 +34,35 @@ main {
   }
 }
 main > h2 {
+  color: var(--text-light);
+  border-block: 2px solid var(--text-light);
 }
+
 footer {
   align-self: center;
-  padding-right: 2em;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--dark);
 }
-footer a {
+.open{
+  background-color: var(--misc);
+}
+.close{
+  background-color: rgba(252, 64, 64, 0.849);
+}
+.signature a {
+  color: var(--misc);
   text-decoration: none;
-  color: var(--green);
+  transition: opacity 0.2s linear;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.signature {
+  align-self: flex-end;
+  /* padding-right: 2em; */
+  /* outline: 1px solid #333333; */
+  font-size: 1.2rem;
 }
 
 #start {
@@ -54,6 +75,8 @@ footer a {
   font-family: sans-serif;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1em;
+  padding-block: 1em;
 }
 
 .grid-column {
@@ -136,6 +159,30 @@ footer a {
   } */
 }
 
+h1 {
+  font-size: 3.1rem;
+  letter-spacing: 0.723rem;
+  font-weight: 800;
+  text-align: center;
+  display: flex;
+  text-wrap: balance;
+  align-items: center;
+justify-content: space-evenly;
+
+  &::before {
+    content: "";
+    justify-self: flex-end;
+    inline-size: 4.2em;
+    block-size: 0.2em;
+    background-color: var(--misc);
+  }
+  &::after {
+    content: "";
+    inline-size: 4.2em;
+    block-size: 0.2em;
+    background-color: var(--misc);
+  }
+}
 @container menu (inline-size<640px) {
   .grid-col-autorow {
     grid-template-columns: 1fr;
@@ -172,6 +219,7 @@ footer a {
   scrollbar-color: var(--green) var(--dark);
   scrollbar-width: auto;
 }
+
 .suggestions li {
   border-radius: 5px;
   background-color: var(--white);
@@ -181,12 +229,15 @@ footer a {
   display: flex;
   justify-content: space-between;
 }
-.hl {
-  background-color: var(--orange);
-}
 
 @media (max-width: 1000px) {
   .wrapper {
     width: 76vw;
+  }
+}
+
+@media (width<440px) {
+  h1 {
+    font-size: 2.5rem;
   }
 }
